@@ -1,30 +1,32 @@
-"use client";
-import Link from "next/link";
-import React, { useState } from "react";
+'use client'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import React, { useState } from 'react'
 
 export default function Navbar() {
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(false)
+  const pathname = usePathname()
 
   const toggleExpanded = () => {
-    setExpanded(!expanded);
-  };
+    setExpanded(!expanded)
+  }
   const navLinks = [
     {
-      name: "Uploadthing",
-      path: "/uploadthing",
+      name: 'EdgeStore',
+      path: '/edgestore',
     },
     {
-      name: "EdgeStore",
-      path: "/edgestore",
+      name: 'EdgeStore-File',
+      path: '/edgestore/edgeFile',
     },
     {
-      name: "Cloudinary",
-      path: "/cloudinary",
+      name: 'Cloudinary',
+      path: '/cloudinary',
     },
-  ];
+  ]
   return (
-    <header className="py-4 bg-white">
-      <div className="container px-4 mx-auto sm:px-6 lg:px-8">
+    <header className="bg-white py-4">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           <div className="flex-shrink-0">
             <a href="/" title="JB" className="flex font-bold">
@@ -41,7 +43,7 @@ export default function Navbar() {
             >
               <span aria-hidden="true">
                 <svg
-                  className="w-7 h-7"
+                  className="h-7 w-7"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -74,11 +76,11 @@ export default function Navbar() {
                   key={i}
                   href={item.path}
                   title={item.name}
-                  className="text-base font-medium text-gray-900 transition-all duration-200 rounded focus:outline-none font-pj hover:text-opacity-50 focus:ring-1 focus:ring-gray-900 focus:ring-offset-2"
+                  className={`font-pj rounded text-base font-medium text-gray-900 transition-all duration-200 hover:text-opacity-80 focus:outline-none focus:ring-1 focus:ring-gray-900 focus:ring-offset-2 ${pathname === item.path ? 'bg-primary rounded-lg px-4 py-2.5 text-white' : ''}`}
                 >
                   {item.name}
                 </Link>
-              );
+              )
             })}
           </nav>
 
@@ -86,7 +88,7 @@ export default function Navbar() {
             <a
               href="https://www.youtube.com/c/JBWEBDEVELOPER"
               title="Subscribe to JB WEB DEVELOPER"
-              className="inline-flex items-center justify-center px-6 py-2 text-base font-bold leading-7 text-white transition-all duration-200 bg-gray-900 border border-transparent rounded hover:bg-gray-600 font-pj focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+              className="font-pj inline-flex items-center justify-center rounded-lg border border-transparent bg-red-500 px-6 py-2 text-base font-bold leading-7 text-white transition-all duration-200 hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2"
               role="button"
             >
               SUBSCRIBE
@@ -94,7 +96,7 @@ export default function Navbar() {
           </nav>
         </div>
 
-        <nav style={{ display: expanded ? "block" : "none" }}>
+        <nav style={{ display: expanded ? 'block' : 'none' }}>
           <div className="px-1 py-8">
             <div className="grid gap-y-7">
               {navLinks.map((item, i) => {
@@ -103,17 +105,17 @@ export default function Navbar() {
                     key={i}
                     href={item.path}
                     title={item.name}
-                    className="text-base font-medium text-gray-900 transition-all duration-200 rounded focus:outline-none font-pj hover:text-opacity-50 focus:ring-1 focus:ring-gray-900 focus:ring-offset-2"
+                    className="font-pj rounded   text-base font-medium text-gray-900 transition-all duration-200 hover:text-opacity-50 focus:outline-none focus:ring-1 focus:ring-gray-900 focus:ring-offset-2"
                   >
                     {item.name}
                   </Link>
-                );
+                )
               })}
 
               <a
                 href="https://www.youtube.com/c/JBWEBDEVELOPER"
                 title="Subscribe to JB WEB DEVELOPER"
-                className="inline-flex items-center justify-center px-6 py-2 text-base font-bold leading-7 text-white transition-all duration-200 bg-gray-900 border border-transparent rounded hover:bg-gray-600 font-pj focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+                className="font-pj inline-flex items-center justify-center rounded border border-transparent bg-gray-900 px-6 py-2 text-base font-bold leading-7 text-white transition-all duration-200 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2"
                 role="button"
               >
                 Subscribe
@@ -123,5 +125,5 @@ export default function Navbar() {
         </nav>
       </div>
     </header>
-  );
+  )
 }
