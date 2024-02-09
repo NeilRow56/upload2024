@@ -23,6 +23,10 @@ export default function Navbar() {
       name: 'Cloudinary',
       path: '/cloudinary',
     },
+    {
+      name: 'Cloud Album',
+      path: '/cloud_album',
+    },
   ]
   return (
     <header className="bg-white py-4">
@@ -76,7 +80,7 @@ export default function Navbar() {
                   key={i}
                   href={item.path}
                   title={item.name}
-                  className={`font-pj rounded text-base font-medium text-gray-900 transition-all duration-200 hover:text-opacity-80 focus:outline-none focus:ring-1 focus:ring-gray-900 focus:ring-offset-2 ${pathname === item.path ? 'bg-primary rounded-lg px-4 py-2.5 text-white' : ''}`}
+                  className={`font-pj rounded text-base font-medium text-gray-900 transition-all duration-200 hover:text-opacity-80 focus:outline-none focus:ring-1 focus:ring-gray-900 focus:ring-offset-2 ${pathname === item.path ? 'rounded-lg bg-primary px-4 py-2.5 text-white' : ''}`}
                 >
                   {item.name}
                 </Link>
