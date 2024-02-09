@@ -21,7 +21,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <EdgeStoreProvider>
           <Navbar />
-          <main className="min-h-screen bg-gray-50 p-8">{children}</main>
+          <main className=" ">{children}</main>
         </EdgeStoreProvider>
       </body>
     </html>

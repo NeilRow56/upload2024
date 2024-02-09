@@ -12,8 +12,8 @@ export default function SingleImageDropzoneUsage() {
   const { edgestore } = useEdgeStore()
 
   return (
-    <div>
-      <section className="mx-auto my-8 w-full max-w-4xl rounded-lg border border-gray-200 bg-white p-4 shadow sm:p-6 md:p-8 dark:border-gray-700 dark:bg-gray-800">
+    <div className=" h-screen bg-slate-50 pt-24">
+      <section className="mx-auto my-8 w-full max-w-4xl rounded-lg border border-gray-200 bg-white p-4 shadow dark:border-gray-700 dark:bg-gray-800 sm:p-6 md:p-8">
         <div className=" flex flex-col">
           <h2 className="mb-2 text-xl font-bold">Single Image Upload</h2>
           <div className="mx-auto">
