@@ -1,41 +1,38 @@
-'use client'
-
+import { CloudinaryImage } from '@/components/cloudinary-album/CloudinaryImage'
 import Sidebar from '@/components/cloudinary-album/Sidebar'
-import { Button } from '@/components/ui/button'
-import { CldUploadButton } from 'next-cloudinary'
+import UploadButton from '@/components/cloudinary-album/UploadButton'
+import cloudinary from 'cloudinary'
+import { CldImage } from 'next-cloudinary'
 
-export default function GalleryPage() {
+type SearchResult = {
+  public_id: string
+}
+
+export default async function GalleryPage() {
+  const results = (await cloudinary.v2.search
+    .expression('resource_type:image ')
+    .sort_by('public_id', 'desc')
+    .max_results(5)
+    .execute()) as { resources: SearchResult[] }
+
   return (
     <div className="flex min-h-screen">
       <Sidebar />
       <main className="flex w-full justify-between px-12 py-4">
         <h2 className="text-4xl font-bold">Gallery Page</h2>
 
-        <Button asChild>
-          <div className="flex w-[100px] gap-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="h-6 w-6 text-white"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"
-              />
-            </svg>
-
-            <CldUploadButton
-              onUpload={(result: any) => {
-                // setImageId(result.info.public_id);
-              }}
-              uploadPreset="giomsr4s"
+        <UploadButton />
+        <div className="grid grid-cols-4 gap-4 px-4">
+          {results.resources.map((result) => (
+            <CloudinaryImage
+              key={result.public_id}
+              src={result.public_id}
+              width="400"
+              height="300"
+              alt="an image of something"
             />
-          </div>
-        </Button>
+          ))}
+        </div>
       </main>
     </div>
   )
