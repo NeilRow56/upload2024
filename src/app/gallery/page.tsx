@@ -2,7 +2,6 @@ import { CloudinaryImage } from '@/components/cloudinary-album/CloudinaryImage'
 import Sidebar from '@/components/cloudinary-album/Sidebar'
 import UploadButton from '@/components/cloudinary-album/UploadButton'
 import cloudinary from 'cloudinary'
-import { CldImage } from 'next-cloudinary'
 
 type SearchResult = {
   public_id: string
@@ -12,16 +11,19 @@ export default async function GalleryPage() {
   const results = (await cloudinary.v2.search
     .expression('resource_type:image ')
     .sort_by('public_id', 'desc')
-    .max_results(5)
+    .max_results(10)
     .execute()) as { resources: SearchResult[] }
 
   return (
     <div className="flex min-h-screen">
       <Sidebar />
-      <main className="flex w-full justify-between px-12 py-4">
-        <h2 className="text-4xl font-bold">Gallery Page</h2>
+      <main className="flex w-full flex-col px-12 py-4">
+        <div className="mb-4 flex justify-between">
+          <h2 className="text-4xl font-bold">Gallery Page</h2>
 
-        <UploadButton />
+          <UploadButton />
+        </div>
+
         <div className="grid grid-cols-4 gap-4 px-4">
           {results.resources.map((result) => (
             <CloudinaryImage

@@ -28,7 +28,7 @@ const UploadButton = (props: Props) => {
           onUpload={(result: any) => {
             // setImageId(result.info.public_id);
           }}
-          uploadPreset="giomsr4s"
+          uploadPreset="lygsc1ol"
         />
       </div>
     </Button>
