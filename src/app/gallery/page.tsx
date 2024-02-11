@@ -1,3 +1,4 @@
+import { ForceRefresh } from '@/components/ForceRefresh'
 import { CloudinaryImage } from '@/components/cloudinary-album/CloudinaryImage'
 import Sidebar from '@/components/cloudinary-album/Sidebar'
 import UploadButton from '@/components/cloudinary-album/UploadButton'
@@ -18,6 +19,7 @@ export default async function GalleryPage() {
 
   return (
     <div className="flex min-h-screen">
+      <ForceRefresh />
       <Sidebar />
       <main className="flex w-full flex-col px-12 py-4">
         <div className="mb-4 flex justify-between">
