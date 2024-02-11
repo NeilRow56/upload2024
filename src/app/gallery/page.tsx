@@ -13,7 +13,7 @@ export default async function GalleryPage() {
     .expression('resource_type:image ')
     .sort_by('created_at', 'desc')
     .with_field('tags')
-    .max_results(30)
+    .max_results(10)
     .execute()) as { resources: SearchResult[] }
 
   console.log('results', results)
@@ -33,9 +33,7 @@ export default async function GalleryPage() {
             <CloudinaryImage
               path="/gallery"
               key={result.public_id}
-              imageData={result}
-              src={result.public_id}
-              public_id={result.public_id}
+              imagedata={result}
               width="400"
               height="300"
               alt="an image of something"
