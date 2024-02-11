@@ -3,6 +3,7 @@
 import { SearchResult } from '@/app/gallery/page'
 import { useEffect, useState } from 'react'
 import { CloudinaryImage } from './CloudinaryImage'
+import { ImageGrid } from './ImageGrid'
 
 export default function FavoritesList({
   initialResources,
@@ -16,23 +17,27 @@ export default function FavoritesList({
   }, [initialResources])
 
   return (
-    <div className="grid grid-cols-4 gap-4">
-      {resources.map((result) => (
-        <CloudinaryImage
-          key={result.public_id}
-          imagedata={result}
-          width="400"
-          height="300"
-          alt="an image of something"
-          onUnheart={(unheartedResource) => {
-            setResources((currentResources) =>
-              currentResources.filter(
-                (resource) => resource.public_id !== unheartedResource.public_id
+    <ImageGrid
+      images={resources}
+      getImage={(imagedata: SearchResult) => {
+        return (
+          <CloudinaryImage
+            key={imagedata.public_id}
+            imagedata={imagedata}
+            width="400"
+            height="300"
+            alt="an image of something"
+            onUnheart={(unheartedResource) => {
+              setResources((currentResources) =>
+                currentResources.filter(
+                  (resource) =>
+                    resource.public_id !== unheartedResource.public_id
+                )
               )
-            )
-          }}
-        />
-      ))}
-    </div>
+            }}
+          />
+        )
+      }}
+    />
   )
 }
