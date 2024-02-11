@@ -3,16 +3,20 @@ import Sidebar from '@/components/cloudinary-album/Sidebar'
 import UploadButton from '@/components/cloudinary-album/UploadButton'
 import cloudinary from 'cloudinary'
 
-type SearchResult = {
+export type SearchResult = {
   public_id: string
+  tags: string[]
 }
 
 export default async function GalleryPage() {
   const results = (await cloudinary.v2.search
     .expression('resource_type:image ')
     .sort_by('created_at', 'desc')
-    .max_results(10)
+    .with_field('tags')
+    .max_results(30)
     .execute()) as { resources: SearchResult[] }
+
+  console.log('results', results)
 
   return (
     <div className="flex min-h-screen">
@@ -27,8 +31,11 @@ export default async function GalleryPage() {
         <div className="grid grid-cols-4 gap-4 px-4">
           {results.resources.map((result) => (
             <CloudinaryImage
+              path="/gallery"
               key={result.public_id}
+              imageData={result}
               src={result.public_id}
+              public_id={result.public_id}
               width="400"
               height="300"
               alt="an image of something"

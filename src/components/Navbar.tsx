@@ -20,12 +20,16 @@ export default function Navbar() {
       path: '/edgestore/edgeFile',
     },
     {
-      name: 'Cloudinary',
+      name: 'Cloudinary Upload',
       path: '/cloudinary',
     },
     {
-      name: 'Cloud Album',
+      name: 'Cloud Album Upload',
       path: '/cloud_album',
+    },
+    {
+      name: 'Cloud Gallery',
+      path: '/gallery',
     },
   ]
   return (
