@@ -1,5 +1,6 @@
 import { ForceRefresh } from '@/components/ForceRefresh'
 import { CloudinaryImage } from '@/components/cloudinary-album/CloudinaryImage'
+import GalleryGrid from '@/components/cloudinary-album/GalleryGrid'
 import Sidebar from '@/components/cloudinary-album/Sidebar'
 import UploadButton from '@/components/cloudinary-album/UploadButton'
 import cloudinary from 'cloudinary'
@@ -28,17 +29,7 @@ export default async function GalleryPage() {
           <UploadButton />
         </div>
 
-        <div className="grid grid-cols-4 gap-4 px-4">
-          {results.resources.map((result) => (
-            <CloudinaryImage
-              key={result.public_id}
-              imagedata={result}
-              width="400"
-              height="300"
-              alt="an image of something"
-            />
-          ))}
-        </div>
+        <GalleryGrid images={results.resources} />
       </main>
     </div>
   )
