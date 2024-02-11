@@ -16,8 +16,6 @@ export default async function GalleryPage() {
     .max_results(10)
     .execute()) as { resources: SearchResult[] }
 
-  console.log('results', results)
-
   return (
     <div className="flex min-h-screen">
       <Sidebar />
