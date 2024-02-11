@@ -7,6 +7,7 @@ import { setAsFavoriteAction } from '@/actions/create-favourite'
 import { SearchResult } from '@/app/gallery/page'
 import { useState, useTransition } from 'react'
 import { FaHeart } from 'react-icons/fa'
+import { ImageMenu } from './ImageMenu'
 
 export function CloudinaryImage(
   props: {
@@ -32,7 +33,7 @@ export function CloudinaryImage(
               setAsFavoriteAction(imagedata.public_id, false)
             })
           }}
-          className="absolute right-2 top-2 cursor-pointer overflow-hidden  text-red-500 hover:text-white"
+          className="absolute left-2 top-2 cursor-pointer overflow-hidden  text-red-500 hover:text-white"
         />
       ) : (
         <Heart
@@ -42,9 +43,10 @@ export function CloudinaryImage(
               setAsFavoriteAction(imagedata.public_id, true)
             })
           }}
-          className="absolute right-2 top-2 cursor-pointer text-red-600 hover:text-white"
+          className="absolute left-2 top-2 cursor-pointer text-red-600 hover:text-white"
         />
       )}
+      <ImageMenu />
     </div>
   )
 }
