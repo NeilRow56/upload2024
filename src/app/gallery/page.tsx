@@ -1,4 +1,5 @@
 import GalleryGrid from '@/components/cloudinary-album/GalleryGrid'
+import Sidebar from '@/components/cloudinary-album/Sidebar'
 import UploadButton from '@/components/cloudinary-album/UploadButton'
 import cloudinary from 'cloudinary'
 
@@ -16,9 +17,10 @@ export default async function GalleryPage() {
     .execute()) as { resources: SearchResult[] }
 
   return (
-    <section>
-      <div className="flex flex-col gap-8">
-        <div className="flex justify-between">
+    <section className="flex min-h-screen ">
+      <Sidebar />
+      <div className="flex w-full flex-col px-12 py-4">
+        <div className=" mb-4 flex justify-between">
           <h1 className="text-4xl font-bold">Gallery</h1>
           <UploadButton />
         </div>
