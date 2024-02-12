@@ -8,8 +8,9 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { AddToAlbumDialog } from './AddToAlbum'
+import { SearchResult } from '@/app/gallery/page'
 
-export function ImageMenu() {
+export function ImageMenu({ image }: { image: SearchResult }) {
   return (
     <div className="absolute right-2 top-2">
       <DropdownMenu>
@@ -20,7 +21,7 @@ export function ImageMenu() {
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-40">
           <DropdownMenuItem asChild>
-            <AddToAlbumDialog />
+            <AddToAlbumDialog image={image} onClose={() => {}} />
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

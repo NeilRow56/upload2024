@@ -46,7 +46,7 @@ export function CloudinaryImage(
           className="absolute left-2 top-2 cursor-pointer text-red-600 hover:text-white"
         />
       )}
-      <ImageMenu />
+      <ImageMenu image={imagedata} />
     </div>
   )
 }
